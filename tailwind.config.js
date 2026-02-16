@@ -52,7 +52,22 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			// Light Bearers brand colors
+  			'lb-purple': {
+  				DEFAULT: '#4A3B6B',
+  				dark: '#2D2341',
+  				light: '#6B5B8E',
+  			},
+  			'lb-yellow': {
+  				DEFAULT: '#FFD234',
+  				light: '#FFE066',
+  				dark: '#FFC629',
   			}
+  		},
+  		fontFamily: {
+  			heading: ['Fredoka', 'Bubblegum Sans', 'Comic Neue', 'cursive'],
+  			body: ['Comic Neue', 'Fredoka', 'sans-serif'],
   		}
   	}
   },
