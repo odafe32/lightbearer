@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import type { FC } from 'react'
 import {
-  Heart, Mail, Instagram, Facebook, Twitter,
-  BookOpen, Star, Sparkles, ArrowRight,
+  Heart, Mail, Instagram,  Star, Sparkles, ArrowRight,
+  BookOpen,
 } from 'lucide-react'
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
@@ -39,17 +39,14 @@ const FOOTER_LINKS = {
 }
 
 const SOCIAL_LINKS = [
-  { icon: Instagram, label: 'Instagram', href: '#', color: '#E4405F' },
-  { icon: Facebook, label: 'Facebook', href: '#', color: '#1877F2' },
-  { icon: Twitter, label: 'Twitter', href: '#', color: '#1DA1F2' },
-  { icon: Mail, label: 'Email', href: '#', color: B.yellow },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/lightbearers.kids?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', color: '#E4405F' },
+  { icon: Mail, label: 'Email', href: 'mailto:lightbearerskids@gmail.com', color: B.yellow },
 ]
 
 // ─── Footer Component ─────────────────────────────────────────────────────────
 export const Footer: FC = () => {
   return (
-    <footer
-      className="relative overflow-hidden"
+    <footer id="contact" className="relative overflow-hidden"
       style={{ background: `linear-gradient(180deg, ${B.purpleDark} 0%, ${B.purple} 100%)` }}
     >
       {/* Dot texture */}
@@ -150,7 +147,7 @@ export const Footer: FC = () => {
         </motion.div>
 
         {/* Main footer content */}
-        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand column */}
           <motion.div
             className="lg:col-span-2"
@@ -176,13 +173,15 @@ export const Footer: FC = () => {
             </p>
 
             {/* Social links */}
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {SOCIAL_LINKS.map((social, i) => {
                 const Icon = social.icon
                 return (
                   <motion.a
                     key={social.label}
                     href={social.href}
+                    target={social.label === 'Instagram' ? '_blank' : undefined}
+                    rel={social.label === 'Instagram' ? 'noopener noreferrer' : undefined}
                     className="w-11 h-11 rounded-xl flex items-center justify-center"
                     style={{
                       background: `${B.white}12`,
@@ -245,7 +244,7 @@ export const Footer: FC = () => {
             transition={{ duration: 0.7, delay: 0.25 }}
           >
             <h4 className="font-heading font-black text-lg mb-5" style={{ color: B.yellow }}>
-              Company
+              Quick Links
             </h4>
             <ul className="space-y-3">
               {FOOTER_LINKS.company.map((link, i) => (
@@ -268,36 +267,7 @@ export const Footer: FC = () => {
             </ul>
           </motion.div>
 
-          {/* Support */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <h4 className="font-heading font-black text-lg mb-5" style={{ color: B.yellow }}>
-              Support
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.support.map((link, i) => (
-                <motion.li
-                  key={link.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 + i * 0.05 }}
-                >
-                  <a
-                    href={link.href}
-                    className="font-body font-medium text-base hover:text-white transition-colors inline-block"
-                    style={{ color: `${B.white}B3` }}
-                  >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+     
         </div>
 
         {/* Bottom bar */}

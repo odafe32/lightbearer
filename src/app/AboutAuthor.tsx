@@ -66,7 +66,7 @@ export const AboutAuthor = () => {
   const imgY = useTransform(scrollYProgress, [0, 1], [-30, 30])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-white">
+    <section id="about" ref={sectionRef} className="relative overflow-hidden bg-white">
 
       {/* ── Full-bleed dark left panel (desktop) ──────────────────────────── */}
       <div

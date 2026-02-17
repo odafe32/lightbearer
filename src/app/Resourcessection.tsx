@@ -387,7 +387,7 @@ export const ResourcesSection: FC = () => {
   const smallProducts = PRODUCTS.filter((p): p is Product => p.size === 'small')
 
   return (
-    <section
+    <section id="resources"
       className="relative overflow-hidden py-28"
       style={{ background: `linear-gradient(180deg, ${B.cream} 0%, #F5F0FF 100%)` }}
     >

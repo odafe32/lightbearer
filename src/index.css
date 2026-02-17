@@ -59,3 +59,6 @@
     --chart-5: 264 35% 45%
   }
 }
+body, html{
+scroll-behavior: smooth;
+}

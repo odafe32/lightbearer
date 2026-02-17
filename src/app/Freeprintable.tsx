@@ -62,7 +62,7 @@ export const FreePrintable = () => {
   }
 
   return (
-    <section
+    <section id="devotional"
       ref={sectionRef}
       className="relative overflow-hidden py-28 lg:py-36"
       style={{

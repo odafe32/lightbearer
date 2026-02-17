@@ -54,7 +54,7 @@ export const FloatingActions = () => {
       </AnimatePresence>
 
       <motion.a
-        href="https://instagram.com/lightbearers" // Replace with actual Instagram handle
+        href="https://www.instagram.com/lightbearers.kids?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.1, y: -2 }}
@@ -66,7 +66,7 @@ export const FloatingActions = () => {
       </motion.a>
 
       <motion.a
-        href="#contact"
+        href="mailto:lightbearerskids@gmail.com"
         whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
         className="bg-white hover:bg-gray-50 text-lb-purple p-3 rounded-full shadow-lg border border-lb-purple transition-colors duration-200"
