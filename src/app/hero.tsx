@@ -160,10 +160,7 @@ const Float = ({
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export const Hero = () => (
-  <section
-    className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    style={{ background: `linear-gradient(135deg, ${BRAND.purpleDark} 0%, ${BRAND.purple} 55%, ${BRAND.purpleDark} 100%)` }}
-  >
+  <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: `linear-gradient(135deg, ${BRAND.purpleDark} 0%, ${BRAND.purple} 55%, ${BRAND.purpleDark} 100%)` }}>
     <AmbientCanvas />
 
     {/* Glow orbs */}

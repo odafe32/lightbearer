@@ -2,13 +2,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { ArrowUp, Instagram, Mail } from 'lucide-react'
 
-const BRAND = {
-  purple: '#4A356B',
-  purpleDark: '#2D233D',
-  yellow: '#FFD700',
-  yellowDark: '#E6C200',
-  purpleLight: '#7A5D8A'
-}
+// const BRAND = {
+//   purple: '#4A356B',
+//   purpleDark: '#2D233D',
+//   yellow: '#FFD700',
+//   yellowDark: '#E6C200',
+//   purpleLight: '#7A5D8A'
+// }
 
 export const FloatingActions = () => {
   const [showBackToTop, setShowBackToTop] = useState(false)
