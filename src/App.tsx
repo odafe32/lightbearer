@@ -10,6 +10,9 @@ import { useState, useEffect } from 'react'
 import { motion, useScroll } from 'framer-motion'
 import { ResourcesSection } from './app/Resourcessection'
 import { WhoThisIsFor } from './app/Whothisisfor'
+import { Footer } from './app/Footer'
+import { Gallery } from './app/Gallery'
+import { FreePrintable } from './app/Freeprintable'
 
 export const App = () => {
   const [loading, setLoading] = useState(true)
@@ -41,6 +44,10 @@ export const App = () => {
       <MusicPlayer />
       <ResourcesSection/>
       <WhoThisIsFor/>
+      <FreePrintable/>
+      <Gallery/>
+      
+      <Footer/>
       {!loading && <FloatingActions />}
     </motion.div>
     </>

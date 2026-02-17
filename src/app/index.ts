@@ -4,3 +4,6 @@ export * from "./WhyThisMatters";
 export * from "./AboutAuthor";
 export * from "./Resourcessection";
 export * from "./WhyThisMatters";
+export * from "./Gallery";
+export * from "./Footer";
+export * from "./Freeprintable";
