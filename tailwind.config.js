@@ -55,7 +55,7 @@ module.exports = {
   			},
   			// Light Bearers brand colors
   			'lb-purple': {
-  				DEFAULT: '#4A3B6B',
+  				DEFAULT: '#3D2D5B',
   				dark: '#2D2341',
   				light: '#6B5B8E',
   			},
