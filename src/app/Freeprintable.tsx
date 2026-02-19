@@ -119,28 +119,6 @@ export const FreePrintable = () => {
       {/* ── Content ──────────────────────────────────────────────────────────── */}
       <div className="relative z-[2] max-w-5xl mx-auto px-6 sm:px-10">
 
-        {/* Top gift badge */}
-        <FadeUp className="flex justify-center mb-8">
-          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-body font-bold text-sm"
-            style={{
-              background:     'rgba(255,255,255,0.1)',
-              border:         `1.5px solid rgba(255,255,255,0.2)`,
-              color:          BRAND.yellowLight,
-              backdropFilter: 'blur(10px)',
-            }}
-            animate={{ boxShadow: [`0 0 0px ${BRAND.yellow}00`, `0 0 20px ${BRAND.yellow}33`, `0 0 0px ${BRAND.yellow}00`] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            <motion.div
-              animate={{ rotate: [0, -15, 15, 0], scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Gift className="w-4 h-4" style={{ color: BRAND.yellow }} />
-            </motion.div>
-            100% Free — No Strings Attached
-          </motion.div>
-        </FadeUp>
 
         {/* Two-column: text + form */}
         <div className="lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-20 items-center">

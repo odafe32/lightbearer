@@ -301,9 +301,9 @@ export const WhoThisIsFor: FC = () => {
             className="font-heading font-bold leading-tight mb-5"
             style={{ color: B.purpleDark, fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
           >
-            For Parents Raising{' '}
+            For  Raising{' '}
             <span className="relative inline-block" style={{ color: B.purpleLight }}>
-              Toddlers &amp; Young Children
+              Kids &amp; Young Children
               <motion.span
                 className="absolute -bottom-1 left-0 right-0 rounded-full"
                 style={{ height: 5, background: `linear-gradient(90deg, ${B.yellow}, ${B.yellowDark})` }}
@@ -475,6 +475,10 @@ export const WhoThisIsFor: FC = () => {
                 style={{ background: B.yellow, color: B.purpleDark, boxShadow: `0 8px 28px ${B.yellow}50` }}
                 whileHover={{ scale: 1.06, boxShadow: `0 14px 36px ${B.yellow}65` }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  const element = document.getElementById('resources')
+                  if (element) element.scrollIntoView({ behavior: 'smooth' })
+                }}
               >
                 Explore Resources
                 <ArrowRight className="w-4 h-4" />
@@ -489,8 +493,12 @@ export const WhoThisIsFor: FC = () => {
                 }}
                 whileHover={{ background: 'rgba(255,255,255,0.18)' }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  const element = document.getElementById('about')
+                  if (element) element.scrollIntoView({ behavior: 'smooth' })
+                }}
               >
-                Learn About Us
+                Learn About The Founder
               </motion.button>
             </motion.div>
           </motion.div>

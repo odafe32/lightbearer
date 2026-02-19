@@ -216,7 +216,7 @@ export const AboutAuthor = () => {
                 <span className="font-body font-bold text-xs whitespace-nowrap">Christian Educator</span>
               </motion.div>
 
-              {/* Floating pill — bottom left */}
+              {/* Floating pill — bottom left
               <motion.div
                 className="absolute -bottom-5 -left-6 flex items-center gap-2 px-4 py-2.5 rounded-2xl shadow-2xl"
                 style={{ background: 'white', color: BRAND.purple, border: `2px solid ${BRAND.yellow}55` }}
@@ -226,7 +226,7 @@ export const AboutAuthor = () => {
               >
                 <Heart className="w-4 h-4 flex-shrink-0" style={{ color: BRAND.yellow }} fill={BRAND.yellow} strokeWidth={0} />
                 <span className="font-body font-bold text-xs whitespace-nowrap">Mentor & Mother</span>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </motion.div>
         </div>
@@ -345,7 +345,7 @@ export const AboutAuthor = () => {
             </FadeUp>
 
             {/* CTA link */}
-            <FadeUp delay={0.58}>
+            {/* <FadeUp delay={0.58}>
               <motion.a
                 href="#about"
                 className="inline-flex items-center gap-2 mt-8 font-body font-bold text-sm tracking-wide underline"
@@ -361,7 +361,7 @@ export const AboutAuthor = () => {
                   <ArrowRight className="w-4 h-4" />
                 </motion.span>
               </motion.a>
-            </FadeUp>
+            </FadeUp> */}
           </div>
         </div>
       </div>

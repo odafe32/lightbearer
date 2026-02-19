@@ -19,17 +19,15 @@ const B = {
 // ─── Footer links ─────────────────────────────────────────────────────────────
 const FOOTER_LINKS = {
   resources: [
-    { label: 'Toddler Devotionals', href: '#' },
     { label: 'Bible Study Tools', href: '#' },
     { label: 'Prayer Guides', href: '#' },
     { label: 'Activity Sheets', href: '#' },
   ],
-  company: [
-    { label: 'About Us', href: '#' },
-    { label: 'Our Story', href: '#' },
-    { label: 'Contact', href: '#' },
-    { label: 'Blog', href: '#' },
-  ],
+  // company: [
+  //   { label: 'About Us', href: '#' },
+  //   { label: 'Our Story', href: '#' },
+  //   { label: 'Contact', href: '#' },
+  // ],
   support: [
     { label: 'Help Center', href: '#' },
     { label: 'FAQs', href: '#' },
@@ -92,7 +90,7 @@ export const Footer: FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Newsletter CTA */}
-        <motion.div
+        {/* <motion.div
           className="py-16 border-b"
           style={{ borderColor: `${B.white}15` }}
           initial={{ opacity: 0, y: 40 }}
@@ -144,7 +142,7 @@ export const Footer: FC = () => {
               </motion.button>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Main footer content */}
         <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -169,7 +167,7 @@ export const Footer: FC = () => {
             </div>
 
             <p className="text-base font-body font-medium mb-6 leading-relaxed" style={{ color: `${B.white}B3` }}>
-              Helping families raise little lightbearers through simple, joyful Bible study tools designed for toddlers and young children.
+              Helping families raise little lightbearers through simple, joyful Bible study tools designed for Kids and young children.
             </p>
 
             {/* Social links */}
@@ -206,7 +204,7 @@ export const Footer: FC = () => {
           </motion.div>
 
           {/* Resources */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -234,9 +232,9 @@ export const Footer: FC = () => {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
 
-          {/* Company */}
+          {/* Company
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -265,7 +263,7 @@ export const Footer: FC = () => {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
 
      
         </div>
@@ -294,7 +292,7 @@ export const Footer: FC = () => {
               <Heart className="w-5 h-5" style={{ color: B.yellow }} fill={B.yellow} />
             </motion.div>
             <span className="font-body font-medium text-base" style={{ color: `${B.white}80` }}>
-              for families
+              for Kids
             </span>
           </div>
         </motion.div>

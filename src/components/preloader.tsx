@@ -220,7 +220,7 @@ export const Preloader = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mb-8"
           >
-            <h1 className="text-5xl md:text-6xl font-heading text-white mb-2 drop-shadow-lg">
+            <h1 className="text-5xl md:text-6xl font-chewy text-white mb-2 drop-shadow-lg">
               Light Bearers
             </h1>
             <motion.div
@@ -234,7 +234,7 @@ export const Preloader = () => {
               }}
             >
               <Sparkles className="w-5 h-5" />
-              <p className="text-lg font-body font-medium">Bringing Faith to Life</p>
+              <p className="text-lg font-chewy font-medium">Bringing Faith to Life</p>
               <Sparkles className="w-5 h-5" />
             </motion.div>
           </motion.div>
@@ -247,7 +247,7 @@ export const Preloader = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-2xl font-heading text-white/90 mb-10 min-h-[32px]"
+              className="text-2xl font-chewy text-white/90 mb-10 min-h-[32px]"
             >
               {messages[messageIndex]}
             </motion.p>

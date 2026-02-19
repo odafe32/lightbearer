@@ -68,6 +68,9 @@ module.exports = {
   		fontFamily: {
   			heading: ['Fredoka', 'Bubblegum Sans', 'Comic Neue', 'cursive'],
   			body: ['Comic Neue', 'Fredoka', 'sans-serif'],
+  			chewy: ['Chewy', 'cursive'],
+  			poppins: ['Poppins', 'sans-serif'],
+  			baloo: ['Baloo 2', 'cursive'],
   		}
   	}
   },

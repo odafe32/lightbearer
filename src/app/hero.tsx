@@ -160,7 +160,7 @@ const Float = ({
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export const Hero = () => (
-  <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: `linear-gradient(135deg, ${BRAND.purpleDark} 0%, ${BRAND.purple} 55%, ${BRAND.purpleDark} 100%)` }}>
+  <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: '#3E2D63' }}>
     <AmbientCanvas />
 
     {/* Glow orbs */}
@@ -222,7 +222,7 @@ export const Hero = () => (
         }}
       >
         <motion.span animate={{ rotate: [0, 14, -14, 0] }} transition={{ duration: 3, repeat: Infinity }}>✨</motion.span>
-        Faith-Building Resources for Families
+        Faith-Building Resources for Kids
         <motion.span animate={{ rotate: [0, -14, 14, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 0.4 }}>✨</motion.span>
       </motion.div>
 
@@ -234,7 +234,7 @@ export const Hero = () => (
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight"
       >
-        Christian Devotionals and{' '}
+       {' '}
         <motion.span
           className="relative inline-block font-heading"
           style={{ color: BRAND.yellow }}
@@ -277,8 +277,8 @@ export const Hero = () => (
         transition={{ duration: 0.75, delay: 0.6 }}
         className="text-base md:text-lg text-white/60 mb-7 max-w-2xl mx-auto leading-relaxed font-body"
       >
-        Lightbearers provides Christ-centered devotionals for kids, Bible-based affirmation cards,
-        and faith-building resources designed especially for toddlers and young children.
+        Lightbearers provides Christ-centered tools for kids, that includes devotionals, Bible-based affirmation cards,
+        and faith-building resources designed especially for young children.
       </motion.p>
 
       {/* Tagline pill */}

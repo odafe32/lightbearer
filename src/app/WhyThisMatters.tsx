@@ -17,12 +17,12 @@ const BRAND = {
 const IMAGES = [
   {
     id:    'main',
-    src:   'https://res.cloudinary.com/dllrkis3c/image/upload/v1771270046/instasave.website_634217859_18086610635129873_6199173910076388246_n_ob0wnx.jpg',
+    src:   'https://res.cloudinary.com/dllrkis3c/image/upload/v1771535844/instasave.website_514603861_18064096889129873_2668405953124291892_n_xgdo5c.jpg',
     label: 'Christ-centered resources for families',
   },
   {
     id:    'second',
-    src:   'https://res.cloudinary.com/dllrkis3c/image/upload/v1771269866/instasave.website_520462481_18065326457129873_4047356168796730753_n_xa4siz.jpg',
+    src:   'https://res.cloudinary.com/dllrkis3c/image/upload/v1771270046/instasave.website_634217859_18086610635129873_6199173910076388246_n_ob0wnx.jpg',
     label: 'Devotional cards for kids',
   },
   {
@@ -36,8 +36,8 @@ const IMAGES = [
 const PILLARS = [
   {
     Icon:   BookOpen,
-    title:  'Daily Bible Reading for Kids',
-    body:   'Simple, age-appropriate Scripture readings that fit into busy family mornings.',
+    title:  'Prayers for Kids',
+    body:   'Simple, heartfelt prayers that help kids connect with God every day.',
     accent: BRAND.yellow,
     iconBg: `${BRAND.yellow}22`,
   },
@@ -487,7 +487,7 @@ export const WhyThisMatters = () => {
                 initial={{ opacity: 0, y: 20 }} animate={quoteInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Arise, shine; for your light has come…
+                Arise, shine; for your light has come, and the glory of the Lord has risen upon you.
               </motion.p>
 
               <motion.p

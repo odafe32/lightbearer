@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { FC, ReactNode } from 'react'
+import { ComingSoonModal } from '@/components/ComingSoonModal'
 import type { LucideIcon } from 'lucide-react'
 import {
   BookOpen, Palette, Star, Heart, Home,
@@ -71,7 +72,7 @@ const PRODUCTS: Product[] = [
     borderColor: '#C4B8E8',
     title:       '31-Day Christian Devotional for Kids',
     subtitle:    'Scripture-centered daily devotions',
-    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771269867/instasave.website_520254930_18065326394129873_4120185402406004152_n_wbbgit.jpg',
+    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771536163/KIDDIES_DEVOTIONAL_MOCKUP.jpg_mb7col.jpg',
     description: "A Scripture-centered devotional created for toddlers and young children. Each day includes short Bible teachings, reflection prompts, and simple applications that make God's Word easy to understand.",
     perks: [
       { icon: Moon, text: 'Bedtime Bible routines'      },
@@ -92,7 +93,7 @@ const PRODUCTS: Product[] = [
     borderColor: '#F5C4B0',
     title:       'Bible Coloring Books & Tracing Activities',
     subtitle:    'ABC Bible adventures',
-    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771269868/instasave.website_516844467_18064654844129873_1485451059338857542_n_cdurs2.jpg',
+    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771536211/ROOTED_AFFIRMATION_CARD_MOCKUP_2.jpg_oig5b8.jpg',
     description: "ABC Bible coloring books featuring biblical characters and Scripture-based tracing activities that reinforce early learning while introducing children to God's Word.",
     perks: [
       { icon: Sparkles, text: 'Biblical characters' },
@@ -166,11 +167,12 @@ const FadeUp: FC<FadeUpProps> = ({ children, delay = 0, className = '' }) => {
 
 // ─── Large card ───────────────────────────────────────────────────────────────
 interface CardProps {
-  product: Product
-  delay:   number
+  product:   Product
+  delay:     number
+  onCtaClick: () => void
 }
 
-const LargeCard: FC<CardProps> = ({ product, delay }) => {
+const LargeCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
   const [hovered, setHovered] = useState<boolean>(false)
   const {
     Icon, accentColor, bgColor, borderColor,
@@ -268,6 +270,7 @@ const LargeCard: FC<CardProps> = ({ product, delay }) => {
               style={{ background: accentColor, boxShadow: `0 6px 20px ${accentColor}40` }}
               whileHover={{ scale: 1.05, boxShadow: `0 10px 28px ${accentColor}55` }}
               whileTap={{ scale: 0.97 }}
+              onClick={onCtaClick}
             >
               {cta}
               <ArrowRight className="w-4 h-4" />
@@ -280,7 +283,7 @@ const LargeCard: FC<CardProps> = ({ product, delay }) => {
 }
 
 // ─── Small card ───────────────────────────────────────────────────────────────
-const SmallCard: FC<CardProps> = ({ product, delay }) => {
+const SmallCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
   const [hovered, setHovered] = useState<boolean>(false)
   const {
     Icon, accentColor, bgColor, borderColor,
@@ -371,6 +374,7 @@ const SmallCard: FC<CardProps> = ({ product, delay }) => {
             style={{ background: accentColor, boxShadow: `0 6px 18px ${accentColor}38` }}
             whileHover={{ scale: 1.04, boxShadow: `0 10px 26px ${accentColor}50` }}
             whileTap={{ scale: 0.97 }}
+            onClick={onCtaClick}
           >
             {cta}
             <ArrowRight className="w-4 h-4" />
@@ -385,115 +389,119 @@ const SmallCard: FC<CardProps> = ({ product, delay }) => {
 export const ResourcesSection: FC = () => {
   const largeProducts = PRODUCTS.filter((p): p is Product => p.size === 'large')
   const smallProducts = PRODUCTS.filter((p): p is Product => p.size === 'small')
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <section id="resources"
-      className="relative overflow-hidden py-28"
-      style={{ background: `linear-gradient(180deg, ${B.cream} 0%, #F5F0FF 100%)` }}
-    >
-      {/* Wavy top border */}
-      <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: 60, overflow: 'hidden' }}>
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
-          <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,0 L0,0 Z" fill={B.purpleDark} opacity="0.06" />
-        </svg>
-      </div>
-
-      {/* Floating deco shapes */}
-      {SHAPES.map((s, i) => (
-        <motion.div
-          key={i}
-          className="absolute pointer-events-none select-none"
-          style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
-          animate={{ y: [0, -14, 0], rotate: s.type === 'star' ? [0, 25, -15, 0] : [0, 0, 0, 0], opacity: [0.5, 0.9, 0.5] }}
-          transition={{ duration: s.dur, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
-        >
-          {s.type === 'star' ? (
-            <svg viewBox="0 0 24 24" style={{ width: '100%', height: '100%' }}>
-              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill={s.color} />
-            </svg>
-          ) : (
-            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: s.color }} />
-          )}
-        </motion.div>
-      ))}
-
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
-        style={{ backgroundImage: `radial-gradient(circle, ${B.purple} 1.5px, transparent 1.5px)`, backgroundSize: '36px 36px' }}
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
-
-        {/* Header */}
-        <FadeUp className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <motion.div animate={{ rotate: [0, 20, -20, 0] }} transition={{ duration: 2.5, repeat: Infinity }}>
-              <Star className="w-5 h-5" style={{ color: B.yellow }} fill={B.yellow} />
-            </motion.div>
-            <span
-              className="text-xs font-heading font-bold tracking-[0.28em] uppercase px-5 py-2 rounded-full"
-              style={{ background: `${B.yellow}22`, color: B.purpleDark, border: `1.5px solid ${B.yellow}88` }}
-            >
-              Our Resources
-            </span>
-            <motion.div animate={{ rotate: [0, -20, 20, 0] }} transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}>
-              <Star className="w-5 h-5" style={{ color: B.yellow }} fill={B.yellow} />
-            </motion.div>
-          </div>
-
-          <h2
-            className="font-heading font-bold leading-tight mb-5"
-            style={{ color: B.purpleDark, fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}
-          >
-            Christian Resources{' '}
-            <span className="relative inline-block" style={{ color: B.purpleLight }}>
-              for Kids
-              <motion.span
-                className="absolute -bottom-1 left-0 right-0 rounded-full"
-                style={{ height: 5, background: `linear-gradient(90deg, ${B.yellow}, ${B.yellowDark})` }}
-                initial={{ scaleX: 0, originX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.0, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </span>
-          </h2>
-
-          <p className="text-lg font-body font-semibold" style={{ color: B.purpleLight }}>
-            Simple, Bible-Based Tools for Growing Faith 🌟
-          </p>
-        </FadeUp>
-
-        {/* Product grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {largeProducts.map((p, i) => (
-            <LargeCard key={p.id} product={p} delay={0.1 + i * 0.1} />
-          ))}
-          {smallProducts.map((p, i) => (
-            <SmallCard key={p.id} product={p} delay={0.25 + i * 0.12} />
-          ))}
+    <>
+      <section id="resources"
+        className="relative overflow-hidden py-28"
+        style={{ background: `linear-gradient(180deg, ${B.cream} 0%, #F5F0FF 100%)` }}
+      >
+        {/* Wavy top border */}
+        <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: 60, overflow: 'hidden' }}>
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+            <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,0 L0,0 Z" fill={B.purpleDark} opacity="0.06" />
+          </svg>
         </div>
 
-        {/* Trust strip
-        <FadeUp delay={0.4}>
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
-            {TRUST_BADGES.map(({ emoji, text }) => (
-              <motion.div
-                key={text}
-                className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl cursor-default"
-                style={{ background: B.white, border: `1.5px solid ${B.purpleLight}22`, boxShadow: '0 2px 12px rgba(61,45,91,0.08)' }}
-                whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(61,45,91,0.14)' }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-xl">{emoji}</span>
-                <span className="text-sm font-heading font-bold" style={{ color: B.purple }}>{text}</span>
+        {/* Floating deco shapes */}
+        {SHAPES.map((s, i) => (
+          <motion.div
+            key={i}
+            className="absolute pointer-events-none select-none"
+            style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
+            animate={{ y: [0, -14, 0], rotate: s.type === 'star' ? [0, 25, -15, 0] : [0, 0, 0, 0], opacity: [0.5, 0.9, 0.5] }}
+            transition={{ duration: s.dur, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
+          >
+            {s.type === 'star' ? (
+              <svg viewBox="0 0 24 24" style={{ width: '100%', height: '100%' }}>
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill={s.color} />
+              </svg>
+            ) : (
+              <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: s.color }} />
+            )}
+          </motion.div>
+        ))}
+
+        {/* Dot grid */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{ backgroundImage: `radial-gradient(circle, ${B.purple} 1.5px, transparent 1.5px)`, backgroundSize: '36px 36px' }}
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+
+          {/* Header */}
+          <FadeUp className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <motion.div animate={{ rotate: [0, 20, -20, 0] }} transition={{ duration: 2.5, repeat: Infinity }}>
+                <Star className="w-5 h-5" style={{ color: B.yellow }} fill={B.yellow} />
               </motion.div>
+              <span
+                className="text-xs font-heading font-bold tracking-[0.28em] uppercase px-5 py-2 rounded-full"
+                style={{ background: `${B.yellow}22`, color: B.purpleDark, border: `1.5px solid ${B.yellow}88` }}
+              >
+                Our Resources
+              </span>
+              <motion.div animate={{ rotate: [0, -20, 20, 0] }} transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}>
+                <Star className="w-5 h-5" style={{ color: B.yellow }} fill={B.yellow} />
+              </motion.div>
+            </div>
+
+            <h2
+              className="font-heading font-bold leading-tight mb-5"
+              style={{ color: B.purpleDark, fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}
+            >
+              Christian Resources{' '}
+              <span className="relative inline-block" style={{ color: B.purpleLight }}>
+                for Kids
+                <motion.span
+                  className="absolute -bottom-1 left-0 right-0 rounded-full"
+                  style={{ height: 5, background: `linear-gradient(90deg, ${B.yellow}, ${B.yellowDark})` }}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.0, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </span>
+            </h2>
+
+            <p className="text-lg font-body font-semibold" style={{ color: B.purpleLight }}>
+              Simple, Bible-Based Tools for Growing Faith 🌟
+            </p>
+          </FadeUp>
+
+          {/* Product grid */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {largeProducts.map((p, i) => (
+              <LargeCard key={p.id} product={p} delay={0.1 + i * 0.1} onCtaClick={() => setModalOpen(true)} />
+            ))}
+            {smallProducts.map((p, i) => (
+              <SmallCard key={p.id} product={p} delay={0.25 + i * 0.12} onCtaClick={() => setModalOpen(true)} />
             ))}
           </div>
-        </FadeUp> */}
 
-      </div>
-    </section>
+          {/* Trust strip
+          <FadeUp delay={0.4}>
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
+              {TRUST_BADGES.map(({ emoji, text }) => (
+                <motion.div
+                  key={text}
+                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl cursor-default"
+                  style={{ background: B.white, border: `1.5px solid ${B.purpleLight}22`, boxShadow: '0 2px 12px rgba(61,45,91,0.08)' }}
+                  whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(61,45,91,0.14)' }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="text-xl">{emoji}</span>
+                  <span className="text-sm font-heading font-bold" style={{ color: B.purple }}>{text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </FadeUp> */}
+
+        </div>
+      </section>
+      <ComingSoonModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
   )
 }
