@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Heart, BookOpen, Star, Sparkles, GraduationCap, Users, ArrowRight } from 'lucide-react'
+import { Heart, BookOpen, Star, Sparkles, GraduationCap, Users } from 'lucide-react'
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const BRAND = {

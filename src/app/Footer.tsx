@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { FC } from 'react'
 import {
-  Heart, Mail, Instagram,  Star, Sparkles, ArrowRight,
+  Heart, Mail, Instagram,  Star, 
   BookOpen,
 } from 'lucide-react'
 
@@ -16,25 +16,6 @@ const B = {
   white:       '#FFFFFF',
 } as const
 
-// ─── Footer links ─────────────────────────────────────────────────────────────
-const FOOTER_LINKS = {
-  resources: [
-    { label: 'Bible Study Tools', href: '#' },
-    { label: 'Prayer Guides', href: '#' },
-    { label: 'Activity Sheets', href: '#' },
-  ],
-  // company: [
-  //   { label: 'About Us', href: '#' },
-  //   { label: 'Our Story', href: '#' },
-  //   { label: 'Contact', href: '#' },
-  // ],
-  support: [
-    { label: 'Help Center', href: '#' },
-    { label: 'FAQs', href: '#' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-  ],
-}
 
 const SOCIAL_LINKS = [
   { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/lightbearers.kids?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', color: '#E4405F' },
