@@ -113,7 +113,7 @@ const PRODUCTS: Product[] = [
     borderColor: '#A8DFB8',
     title:       'Christian Affirmation Cards for Children',
     subtitle:    'Biblical identity & confidence',
-    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771269868/instasave.website_516992069_18064654847129873_827477036871046331_n_phva5q.jpg',
+    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771536163/KIDDIES_DEVOTIONAL_MOCKUP.jpg_mb7col.jpg ',
     description: 'Biblical identity statements rooted in Scripture to help children grow confident in who they are in Christ.',
     perks: [
       { icon: Heart,    text: 'Identity in Christ' },
