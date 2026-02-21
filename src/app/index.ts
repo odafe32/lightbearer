@@ -7,3 +7,4 @@ export * from "./WhyThisMatters";
 export * from "./Gallery";
 export * from "./Footer";
 export * from "./Freeprintable";
+export * from "./SocialMediaSection";

@@ -13,6 +13,7 @@ import { WhoThisIsFor } from './app/Whothisisfor'
 import { Footer } from './app/Footer'
 import { Gallery } from './app/Gallery'
 import { FreePrintable } from './app/Freeprintable'
+import { SocialMediaSection } from './app/SocialMediaSection'
 
 export const App = () => {
   const [loading, setLoading] = useState(true)
@@ -45,8 +46,8 @@ export const App = () => {
       <ResourcesSection/>
       <WhoThisIsFor/>
       <FreePrintable/>
+    <SocialMediaSection/>
       <Gallery/>
-      
       <Footer/>
       {!loading && <FloatingActions />}
     </motion.div>
