@@ -93,7 +93,7 @@ const PRODUCTS: Product[] = [
     borderColor: '#F5C4B0',
     title:       'Bible Coloring Books & Tracing Activities',
     subtitle:    'ABC Bible adventures',
-    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771536163/KIDDIES_DEVOTIONAL_MOCKUP.jpg_mb7col.jpg ',
+    image:       '/coloring-book-1.jpeg',
     description: "ABC Bible coloring books featuring biblical characters and Scripture-based tracing activities that reinforce early learning while introducing children to God's Word.",
     perks: [
       { icon: Sparkles, text: 'Biblical characters' },
