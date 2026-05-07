@@ -5,7 +5,7 @@ import { ComingSoonModal } from '@/components/ComingSoonModal'
 import type { LucideIcon } from 'lucide-react'
 import {
   BookOpen, Palette, Star, Heart, Home,
-  Sun, Moon, Sparkles, ArrowRight, Check,
+  Sun, Moon, Sparkles, ArrowRight, Check, BookMarked,
 } from 'lucide-react'
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
@@ -42,6 +42,7 @@ interface Product {
   perks:       Perk[]
   cta:         string
   size:        'large' | 'small'
+  href?:       string  // if set, CTA opens this URL; otherwise opens coming-soon modal
 }
 
 interface DecoShape {
@@ -53,11 +54,6 @@ interface DecoShape {
   delay: number
   dur:   number
 }
-
-// interface TrustBadge {
-//   emoji: string
-//   text:  string
-// }
 
 // ─── Product data ─────────────────────────────────────────────────────────────
 const PRODUCTS: Product[] = [
@@ -104,23 +100,46 @@ const PRODUCTS: Product[] = [
   },
   {
     id:          'affirmations',
-    tag:         'New ✨',
+    tag:         'Free Download ✨',
     tagColor:    '#34C759',
     emoji:       '✨',
     Icon:        Heart,
     accentColor: '#1A7F3C',
     bgColor:     '#F0FBF4',
     borderColor: '#A8DFB8',
-    title:       'Christian Affirmation Cards for Children',
+    title:       'Daily Affirmations for Kids: Build Confidence, Identity & Faith',
     subtitle:    'Biblical identity & confidence',
-    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1771536211/ROOTED_AFFIRMATION_CARD_MOCKUP_2.jpg_oig5b8.jpg',
-    description: 'Biblical identity statements rooted in Scripture to help children grow confident in who they are in Christ.',
+    image:       'https://files.selar.co/product-images/2026/products/lightbearers-kids1/free-daily-affirmations-f-selar.com-69e5db6d9c613.jpg',
+    description: 'Short, powerful affirmations rooted in truth — designed to help your child grow in confidence, emotional security, and identity in Christ. Completely free.',
     perks: [
       { icon: Heart,    text: 'Identity in Christ' },
       { icon: Sparkles, text: 'Scripture-rooted'   },
     ],
-    cta:  'Shop Cards',
+    cta:  'Download Free',
     size: 'small',
+    href: 'https://selar.com/freedailyaffirmationsforkidsbuildconfidenceidentityfaith',
+  },
+  {
+    id:          'prayer-guide',
+    tag:         'For Parents 🙏',
+    tagColor:    B.yellow,
+    emoji:       '🙏',
+    Icon:        BookMarked,
+    accentColor: B.purpleDark,
+    bgColor:     '#F3F0FF',
+    borderColor: '#C4B8E8',
+    title:       "A Parent's Prayer Guide: 50 Scriptural Prayers for Your Child",
+    subtitle:    'Pray with clarity & confidence',
+    image:       'https://res.cloudinary.com/dllrkis3c/image/upload/v1778149620/prayer_tc4csn.jpg',
+    description: '5 prayer categories, 50 powerful prayer points — covering the Spiritual, Physical, Emotional, Academic and Mental areas of your child\'s life. Rooted in Proverbs 22:6.',
+    perks: [
+      { icon: BookMarked, text: '50 scriptural prayer points' },
+      { icon: Heart,      text: '5 key life areas covered'    },
+      { icon: Sparkles,   text: 'Pray with clarity & purpose' },
+    ],
+    cta:  'Get the Prayer Guide',
+    size: 'large',
+    href: 'https://selar.com/aparentsprayerguidebylightbearers',
   },
 ]
 
@@ -133,14 +152,6 @@ const SHAPES: DecoShape[] = [
   { type: 'circle', top: '45%', left: '96%', size: 14, color: B.purpleLight, delay: 1.2, dur: 4.5 },
   { type: 'circle', top: '55%', left: '1%',  size: 16, color: '#FF8C69',     delay: 2.0, dur: 3.2 },
 ]
-
-// ─── Trust badges ─────────────────────────────────────────────────────────────
-// const TRUST_BADGES: TrustBadge[] = [
-//   { emoji: '📦', text: 'Digital Download' },
-//   { emoji: '👨‍👩‍👧', text: 'Family Approved'  },
-//   { emoji: '✝️',  text: 'Bible-Based'      },
-//   { emoji: '🎉', text: 'Kids Love Them'   },
-// ]
 
 // ─── FadeUp ───────────────────────────────────────────────────────────────────
 interface FadeUpProps {
@@ -165,11 +176,20 @@ const FadeUp: FC<FadeUpProps> = ({ children, delay = 0, className = '' }) => {
   )
 }
 
+// ─── Shared CTA handler ───────────────────────────────────────────────────────
+function handleCta(href?: string, openModal?: () => void) {
+  if (href) {
+    window.open(href, '_blank', 'noopener,noreferrer')
+  } else {
+    openModal?.()
+  }
+}
+
 // ─── Large card ───────────────────────────────────────────────────────────────
 interface CardProps {
-  product:   Product
-  delay:     number
-  onCtaClick: () => void
+  product:     Product
+  delay:       number
+  onCtaClick:  () => void
 }
 
 const LargeCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
@@ -177,7 +197,7 @@ const LargeCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
   const {
     Icon, accentColor, bgColor, borderColor,
     tag, tagColor, title, subtitle,
-    image, description, perks, cta, emoji,
+    image, description, perks, cta, emoji, href,
   } = product
 
   return (
@@ -270,7 +290,7 @@ const LargeCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
               style={{ background: accentColor, boxShadow: `0 6px 20px ${accentColor}40` }}
               whileHover={{ scale: 1.05, boxShadow: `0 10px 28px ${accentColor}55` }}
               whileTap={{ scale: 0.97 }}
-              onClick={onCtaClick}
+              onClick={() => handleCta(href, onCtaClick)}
             >
               {cta}
               <ArrowRight className="w-4 h-4" />
@@ -288,7 +308,7 @@ const SmallCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
   const {
     Icon, accentColor, bgColor, borderColor,
     tag, tagColor, title, subtitle,
-    image, description, perks, cta, emoji,
+    image, description, perks, cta, emoji, href,
   } = product
 
   return (
@@ -374,7 +394,7 @@ const SmallCard: FC<CardProps> = ({ product, delay, onCtaClick }) => {
             style={{ background: accentColor, boxShadow: `0 6px 18px ${accentColor}38` }}
             whileHover={{ scale: 1.04, boxShadow: `0 10px 26px ${accentColor}50` }}
             whileTap={{ scale: 0.97 }}
-            onClick={onCtaClick}
+            onClick={() => handleCta(href, onCtaClick)}
           >
             {cta}
             <ArrowRight className="w-4 h-4" />
@@ -480,24 +500,6 @@ export const ResourcesSection: FC = () => {
               <SmallCard key={p.id} product={p} delay={0.25 + i * 0.12} onCtaClick={() => setModalOpen(true)} />
             ))}
           </div>
-
-          {/* Trust strip
-          <FadeUp delay={0.4}>
-            <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
-              {TRUST_BADGES.map(({ emoji, text }) => (
-                <motion.div
-                  key={text}
-                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl cursor-default"
-                  style={{ background: B.white, border: `1.5px solid ${B.purpleLight}22`, boxShadow: '0 2px 12px rgba(61,45,91,0.08)' }}
-                  whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(61,45,91,0.14)' }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="text-xl">{emoji}</span>
-                  <span className="text-sm font-heading font-bold" style={{ color: B.purple }}>{text}</span>
-                </motion.div>
-              ))}
-            </div>
-          </FadeUp> */}
 
         </div>
       </section>
