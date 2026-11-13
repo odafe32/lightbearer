@@ -351,7 +351,9 @@ export const Hero = () => (
             }}
           >
             <motion.a
-              href="#shop"
+              href="https://tr.ee/rAXo54M04X"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative z-10 flex items-center gap-2"
               whileHover={{ x: [0, 2, -2, 0] }}
               transition={{ duration: 0.5 }}

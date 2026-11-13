@@ -18,7 +18,7 @@ export const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '#home', icon: Home },
     { name: 'About', href: '#about', icon: Info },
-    { name: 'Resources', href: '#resources', icon: Package },
+    { name: 'Resources', href: 'https://wa.me/message/UR35A3OFUBJWJ1', icon: Package },
     { name: 'Devotional', href: '#devotional', icon: BookOpen },
   ]
 
@@ -81,6 +81,8 @@ export const Navigation = () => {
                         >
                           <NavigationMenuLink
                             href={item.href}
+                            target={item.href.startsWith('http') ? '_blank' : undefined}
+                            rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                             className={cn(
                               navigationMenuTriggerStyle(),
                               'font-body font-semibold text-gray-700 hover:text-lb-purple transition-all duration-200 rounded-lg px-4 py-2 flex items-center gap-2 relative overflow-hidden text-lg'
@@ -190,6 +192,8 @@ export const Navigation = () => {
                       <motion.a
                         key={item.name}
                         href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         variants={{
                           hidden: { opacity: 0, x: 50 },
                           visible: { opacity: 1, x: 0 },

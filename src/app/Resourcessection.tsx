@@ -77,6 +77,7 @@ const PRODUCTS: Product[] = [
     ],
     cta:  'Get the Devotional',
     size: 'large',
+    href: 'https://tr.ee/rAXo54M04X',
   },
   {
     id:          'coloring',
@@ -97,6 +98,7 @@ const PRODUCTS: Product[] = [
     ],
     cta:  'Explore Books',
     size: 'small',
+    href: 'https://tr.ee/rAXo54M04X',
   },
   {
     id:          'affirmations',
@@ -117,7 +119,7 @@ const PRODUCTS: Product[] = [
     ],
     cta:  'Download Free',
     size: 'small',
-    href: 'https://selar.com/freedailyaffirmationsforkidsbuildconfidenceidentityfaith',
+    href: 'https://wa.me/message/UR35A3OFUBJWJ1',
   },
   {
     id:          'prayer-guide',
@@ -139,7 +141,7 @@ const PRODUCTS: Product[] = [
     ],
     cta:  'Get the Prayer Guide',
     size: 'large',
-    href: 'https://selar.com/aparentsprayerguidebylightbearers',
+    href: 'https://wa.me/message/UR35A3OFUBJWJ1',
   },
 ]
 
